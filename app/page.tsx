@@ -2,10 +2,23 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function Home() {
+  const clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
+  const redirectUri = process.env.NEXT_PUBLIC_REDIRECT_URI;
+
+  if (!clientId || !redirectUri) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen py-2">
+        <p className="text-red-600">
+          Missing required environment variables. Please set NEXT_PUBLIC_CLIENT_ID and NEXT_PUBLIC_REDIRECT_URI.
+        </p>
+      </div>
+    );
+  }
+
   const stravaAuthUrl =
     `https://www.strava.com/oauth/authorize` +
-    `?client_id=${process.env.CLIENT_ID}` +
-    `&redirect_uri=${process.env.REDIRECT_URI}` +
+    `?client_id=${clientId}` +
+    `&redirect_uri=${redirectUri}` +
     `&response_type=code` +
     `&scope=activity:read,activity:write`;
 
