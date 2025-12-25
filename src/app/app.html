@@ -1,0 +1,93 @@
+<div class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+  <!-- Header with theme toggle -->
+  <header class="border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
+          {{ title() }}
+        </h1>
+        <button
+          (click)="themeService.toggleTheme()"
+          class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          [attr.aria-label]="themeService.isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode'"
+        >
+          @if (themeService.isDarkMode()) {
+            <!-- Sun icon for light mode -->
+            <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          } @else {
+            <!-- Moon icon for dark mode -->
+            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          }
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg p-8 transition-colors">
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+          Welcome to Strava App
+        </h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-6">
+          This is a basic Angular app with dark/light mode support built with Tailwind CSS and running in zoneless mode.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow transition-colors">
+            <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+              Angular 21
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Latest version with standalone components
+            </p>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow transition-colors">
+            <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+              Zoneless
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Experimental zoneless change detection
+            </p>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow transition-colors">
+            <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+              Tailwind CSS
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Utility-first CSS framework
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-blue-50 dark:bg-blue-900 border-l-4 border-blue-500 p-4 rounded transition-colors">
+          <p class="text-blue-700 dark:text-blue-200">
+            <strong>Theme Mode:</strong> {{ themeService.isDarkMode() ? 'Dark' : 'Light' }}
+          </p>
+          <p class="text-blue-600 dark:text-blue-300 text-sm mt-1">
+            Click the toggle button in the header to switch between themes.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Router outlet for routing support -->
+    <router-outlet />
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-700 mt-12">
+    <div class="container mx-auto px-4 py-6">
+      <p class="text-center text-gray-600 dark:text-gray-400">
+        Strava App - Built with Angular & Tailwind CSS
+      </p>
+    </div>
+  </footer>
+</div>
