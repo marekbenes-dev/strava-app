@@ -72,7 +72,7 @@ export default function Home() {
                 className="w-full px-4 py-2 border border-zinc-300 dark:border-zinc-600 rounded-md bg-white dark:bg-zinc-700 text-zinc-900 dark:text-zinc-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 dateFormat="yyyy-MM-dd"
                 placeholderText="Select end date"
-                minDate={fromDate || undefined}
+                minDate={fromDate ?? undefined}
               />
             </div>
 
